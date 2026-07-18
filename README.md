@@ -28,7 +28,7 @@ npm run dev
 **Render video**
 
 ```console
-npx remotion render
+npx remotion render src/index.ts MoleculeStates out/molecule-hd-1080p.mp4 --codec=h264 --crf=16 --pixel-format=yuv420p --width=1920 --height=1080 --audio-codec=aac
 ```
 
 **Upgrade Remotion**
@@ -52,12 +52,3 @@ Found an issue with Remotion? [File an issue here](https://github.com/remotion-d
 ## License
 
 Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
-
-
-px remotion render src/index.ts MoleculeStates out/molecule-youtube.mp4 \
-  --codec=h264 \
-  --scale=1.5 \
-  --crf=18 \
-  --pixel-format=yuv420p \
-  --audio-codec=aac \
-  --audio-bitrate=320k

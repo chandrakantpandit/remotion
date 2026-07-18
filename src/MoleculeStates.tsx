@@ -6,6 +6,7 @@ const CARD_MARGIN_X = 14;
 const MOLECULE_AREA_INSET_X = 24;
 const MOLECULE_AREA_TOP = 120;
 const MOLECULE_AREA_BOTTOM = 28;
+const MOLECULE_TEXT_SAFE_GAP = 22;
 
 type Molecule = {
 	x: number;
@@ -60,13 +61,13 @@ const pullTowardCenter = (molecules: Molecule[], factor: number): Molecule[] => 
 
 const makeSolidMolecules = (): Molecule[] => {
 	const molecules: Molecule[] = [];
-	const cols = 6;
-	const rows = 6;
+	const cols = 5;
+	const rows = 4;
 	for (let row = 0; row < rows; row++) {
 		for (let col = 0; col < cols; col++) {
 			molecules.push({
-				x: 0.24 + (col / (cols - 1)) * 0.52,
-				y: 0.33 + (row / (rows - 1)) * 0.34,
+				x: 0.28 + (col / (cols - 1)) * 0.44,
+				y: 0.37 + (row / (rows - 1)) * 0.26,
 				size: 17,
 				phase: (row + col) * 0.7,
 				speed: 0.8,
@@ -80,22 +81,28 @@ const makeLiquidMolecules = (): Molecule[] => {
 	return centerMolecules(
 		pullTowardCenter(
 			[
-		{x: 0.23, y: 0.25, size: 16, phase: 0.3, speed: 1.2},
-		{x: 0.39, y: 0.22, size: 17, phase: 1.1, speed: 0.95},
-		{x: 0.55, y: 0.29, size: 16, phase: 2.4, speed: 1.25},
-		{x: 0.68, y: 0.24, size: 16, phase: 1.7, speed: 0.85},
-		{x: 0.78, y: 0.36, size: 17, phase: 2.9, speed: 1.15},
-		{x: 0.31, y: 0.43, size: 16, phase: 3.3, speed: 0.9},
-		{x: 0.45, y: 0.5, size: 17, phase: 4.1, speed: 1.35},
-		{x: 0.62, y: 0.47, size: 16, phase: 2.1, speed: 1.05},
-		{x: 0.76, y: 0.56, size: 16, phase: 0.8, speed: 1.25},
-		{x: 0.25, y: 0.62, size: 17, phase: 5.1, speed: 1.1},
-		{x: 0.38, y: 0.68, size: 16, phase: 4.4, speed: 0.9},
-		{x: 0.53, y: 0.66, size: 17, phase: 3.8, speed: 1.15},
-		{x: 0.69, y: 0.72, size: 16, phase: 1.9, speed: 0.95},
-		{x: 0.82, y: 0.68, size: 17, phase: 0.1, speed: 1.3},
+				{x: 0.23, y: 0.25, size: 16, phase: 0.3, speed: 1.2},
+				{x: 0.39, y: 0.22, size: 17, phase: 1.1, speed: 0.95},
+				{x: 0.55, y: 0.29, size: 16, phase: 2.4, speed: 1.25},
+				{x: 0.68, y: 0.24, size: 16, phase: 1.7, speed: 0.85},
+				{x: 0.78, y: 0.36, size: 17, phase: 2.9, speed: 1.15},
+				{x: 0.31, y: 0.43, size: 16, phase: 3.3, speed: 0.9},
+				{x: 0.45, y: 0.5, size: 17, phase: 4.1, speed: 1.35},
+				{x: 0.62, y: 0.47, size: 16, phase: 2.1, speed: 1.05},
+				{x: 0.76, y: 0.56, size: 16, phase: 0.8, speed: 1.25},
+				{x: 0.25, y: 0.62, size: 17, phase: 5.1, speed: 1.1},
+				{x: 0.38, y: 0.68, size: 16, phase: 4.4, speed: 0.9},
+				{x: 0.53, y: 0.66, size: 17, phase: 3.8, speed: 1.15},
+				{x: 0.69, y: 0.72, size: 16, phase: 1.9, speed: 0.95},
+				{x: 0.82, y: 0.68, size: 17, phase: 0.1, speed: 1.3},
+				{x: 0.3, y: 0.31, size: 16, phase: 2.2, speed: 1.05},
+				{x: 0.46, y: 0.34, size: 17, phase: 0.6, speed: 1.1},
+				{x: 0.61, y: 0.6, size: 16, phase: 4.9, speed: 1.2},
+				{x: 0.74, y: 0.44, size: 16, phase: 3.2, speed: 1.0},
+				{x: 0.33, y: 0.55, size: 17, phase: 1.5, speed: 1.05},
+				{x: 0.58, y: 0.76, size: 16, phase: 2.7, speed: 0.95},
 			],
-			0.62,
+			0.88,
 		),
 	);
 };
@@ -112,6 +119,16 @@ const makeGasMolecules = (): Molecule[] => {
 		{x: 0.47, y: 0.71, size: 16, phase: 0.9, speed: 1.3},
 		{x: 0.74, y: 0.82, size: 15, phase: 2.2, speed: 1.55},
 		{x: 0.9, y: 0.72, size: 16, phase: 4.6, speed: 1.35},
+		{x: 0.24, y: 0.3, size: 15, phase: 1.4, speed: 1.45},
+		{x: 0.58, y: 0.2, size: 16, phase: 3.3, speed: 1.2},
+		{x: 0.82, y: 0.34, size: 15, phase: 5.2, speed: 1.5},
+		{x: 0.35, y: 0.52, size: 16, phase: 2.6, speed: 1.4},
+		{x: 0.53, y: 0.6, size: 15, phase: 0.2, speed: 1.6},
+		{x: 0.67, y: 0.48, size: 16, phase: 4.1, speed: 1.3},
+		{x: 0.12, y: 0.82, size: 15, phase: 3.7, speed: 1.45},
+		{x: 0.42, y: 0.85, size: 16, phase: 1.1, speed: 1.35},
+		{x: 0.61, y: 0.74, size: 15, phase: 2.8, speed: 1.55},
+		{x: 0.86, y: 0.62, size: 16, phase: 4.9, speed: 1.25},
 	]);
 };
 
@@ -256,14 +273,24 @@ const MoleculePanel: React.FC<{
 					const waveB = Math.cos(time * 4.9 * molecule.speed + molecule.phase * 1.2);
 					const waveC = Math.sin(time * 3.2 + index * 0.8 + panelIndex * 1.1);
 
-					const cx =
+					const targetX =
 						baseX +
 						waveA * panel.amplitudeX * motionBoost +
 						waveC * (panel.amplitudeX * 0.32);
-					const cy =
+					const targetY =
 						baseY +
 						waveB * panel.amplitudeY * motionBoost +
 						Math.cos(time * 2.6 + molecule.phase) * (panel.amplitudeY * 0.24);
+					const edgePadding = molecule.size * 1.1 + 3;
+					const topSafeBoundary = edgePadding + MOLECULE_TEXT_SAFE_GAP;
+					const cx = Math.max(
+						edgePadding,
+						Math.min(moleculeAreaWidth - edgePadding, targetX),
+					);
+					const cy = Math.max(
+						topSafeBoundary,
+						Math.min(moleculeAreaHeight - edgePadding, targetY),
+					);
 
 					return (
 						<MoleculeCircle
